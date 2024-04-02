@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- site style -->
+    <link rel="stylesheet" href="./_css/overview_myver.css">
+
+
+    <!-- jquery -->
+    <script src="_js/jquery-3.6.0.min.js"></script>
+
+    <!-- Phones detail spac script -->
+    <script src="./_js/phoneDetail/PhoneDetail.js"></script>
+
+    <!-- Website control script -->
+    <script src="./_js/overviewControl.js"></script>
+
+    <title>手機一覽 - 手機比較網</title>
+</head>
+
+<body>
+    <div id="topbar">
+        <div id="logo"><a href="./index.html">手機比較網</a></div>
+        <nav>
+            <ul class="navItem">
+                <li><a href="./index.html">首頁</a></li>
+                <li><a href="./index.html#popularPhone">熱門手機</a></li>
+                <li><a href="">手機一覽</a></li>
+                <li><a href="./budget_filter.html">預算選機</a></li>
+                <li><a href="./news.html">相關新聞</a></li>
+                <li><a href="./index.html#about">關於我們</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div>
+        <p class="title" id="popularPhone">手機一覽</p>
+    </div>
+
+    <div id="filter">
+        <p>選擇廠牌</p>
+        <div id="band_btn">
+            <p id="All">全部</p>
+            <p id="apple">Apple</p>
+            <p id="asus">ASUS</p>
+            <p id="google">Google</p>
+            <p id="htc">HTC</p>
+            <p id="oppo">OPPO</p>
+            <p id="samsung">Samsung</p>
+            <p id="sony">Sony</p>
+        </div>
+    </div>
+
+    <div id="phoneOverview">
+        
+    </div>
+
+    <div id="phoneContent">
+        <div id="close">
+            <p>X</p>
+        </div>
+        <div class="original">
+            <div>
+                <div id="phoneImg">
+                    <img src="./_img/phones/Samsung_Galaxy_S21_Ultra.png">
+                </div>
+                <div id="textArea">
+                    <div class="brand">
+                        <p>品牌：<span>brand</span></p>
+                    </div>
+                    <div class="model">
+                        <p>型號：<span>model</span></p>
+                    </div>
+                    <div class="os">
+                        <p>系統：<span>os</span></p>
+                    </div>
+                    <div class="processor">
+                        <p>處理器：<span>processor</span></p>
+                    </div>
+                    <div class="ram">
+                        <p>記憶體：<span>ram</span> GB</p>
+                    </div>
+                    <div class="rom">
+                        <p>儲存空間：<span>rom</span> GB</p>
+                    </div>
+                    <div class="display">
+                        <p>螢幕：<span>display</span> 吋</p>
+                    </div>
+                    <div class="disp_tech">
+                        <p>螢幕技術：<span>disp_tech</span></p>
+                    </div>
+                    <div class="refresh_rate">
+                        <p>螢幕更新率：<span>refresh_rate</span> Hz</p>
+                    </div>
+                    <div class="wide">
+                        <p>主鏡頭：<span>wide</span> 萬畫素</p>
+                    </div>
+                    <div class="ultrawide">
+                        <p>超廣角鏡頭：<span>ultrawide</span> 萬畫素</p>
+                    </div>
+                    <div class="telephoto">
+                        <p>望遠鏡頭：<span>telephoto</span> 萬畫素</p>
+                    </div>
+                    <div class="ois">
+                        <p>防手震：<span>ois</span></p>
+                    </div>
+                    <div class="front_camera">
+                        <p>前鏡頭：<span>front_camera</span> 萬畫素</p>
+                    </div>
+                    <div class="battery">
+                        <p>電池容量：<span>battery</span> mAh</p>
+                    </div>
+                    <div class="charging_watt">
+                        <p>充電瓦數：<span>charging_watt</span> W</p>
+                    </div>
+                    <div class="waterproof">
+                        <p>防水：<span>waterproof</span></p>
+                    </div>
+                    <div class="band_support">
+                        <p>支援網路：<span>band_support</span></p>
+                    </div>
+                    <div class="weight">
+                        <p>重量：<span>weight</span> g</p>
+                    </div>
+                    <div class="size">
+                        <p>尺寸：<span>size</span> mm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="btn">
+        <button id="btncompare">+比較</button>
+        </div>
+        <div class="compare">
+            <div id="cphoneImg">
+                <img src="./_img/phones/Samsung_Galaxy_S21_Ultra.png">
+            </div>
+            <div id="ctextArea">
+                <div class="cbrand">
+                    <p>品牌：<span>brand</span></p>
+                </div>
+                <div class="cmodel">
+                    <p>型號：<span>model</span></p>
+                </div>
+                <div class="cos">
+                    <p>系統：<span>os</span></p>
+                </div>
+                <div class="cprocessor">
+                    <p>處理器：<span>processor</span></p>
+                </div>
+                <div class="cram">
+                    <p>記憶體：<span>ram</span> GB</p>
+                </div>
+                <div class="crom">
+                    <p>儲存空間：<span>rom</span> GB</p>
+                </div>
+                <div class="cdisplay">
+                    <p>螢幕：<span>display</span> 吋</p>
+                </div>
+                <div class="cdisp_tech">
+                    <p>螢幕技術：<span>disp_tech</span></p>
+                </div>
+                <div class="crefresh_rate">
+                    <p>螢幕更新率：<span>refresh_rate</span> Hz</p>
+                </div>
+                <div class="cwide">
+                    <p>主鏡頭：<span>wide</span> 萬畫素</p>
+                </div>
+                <div class="cultrawide">
+                    <p>超廣角鏡頭：<span>ultrawide</span> 萬畫素</p>
+                </div>
+                <div class="ctelephoto">
+                    <p>望遠鏡頭：<span>telephoto</span> 萬畫素</p>
+                </div>
+                <div class="cois">
+                    <p>防手震：<span>ois</span></p>
+                </div>
+                <div class="cfront_camera">
+                    <p>前鏡頭：<span>front_camera</span> 萬畫素</p>
+                </div>
+                <div class="cbattery">
+                    <p>電池容量：<span>battery</span> mAh</p>
+                </div>
+                <div class="ccharging_watt">
+                    <p>充電瓦數：<span>charging_watt</span> W</p>
+                </div>
+                <div class="cwaterproof">
+                    <p>防水：<span>waterproof</span></p>
+                </div>
+                <div class="cband_support">
+                    <p>支援網路：<span>band_support</span></p>
+                </div>
+                <div class="cweight">
+                    <p>重量：<span>weight</span> g</p>
+                </div>
+                <div class="csize">
+                    <p>尺寸：<span>size</span> mm</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2021 手機比較網</p>
+    </footer>
+</body>
+
+</html>

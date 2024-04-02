@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>登入系統</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #D4E6F1;
+        }
+
+        img {
+            text-align: center;
+            width: 75px;
+            height: 75px;
+            margin-top: 5px;
+            margin-left: 5px;
+        }
+
+        #bigBox {
+            margin: 0 auto;
+            margin-top: 125px;
+            padding: 20px 50px;
+            background-color: #2E4053;
+            width: 400px;
+            height: 300px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #bigBox h1 {
+            color: white;
+        }
+
+        #bigBox .inputBox {
+            margin-top: 40px;
+        }
+
+        #bigBox .inputBox .inputText {
+            margin-top: 20px;
+        }
+
+        #bigBox .inputBox .inputText span {
+            color: white;
+        }
+
+        #bigBox .inputBox .inputText input {
+            border: 0;
+            padding: 10px 10px;
+            border-bottom: 1px solid white;
+            background-color: #00000000;
+            color: white;
+        }
+
+
+        #bigBox .inputBox .inputButton {
+            border: 0;
+            width: 150px;
+            height: 25px;
+            color: #2E4053;
+            margin-top: 30px;
+            border-radius: 20px;
+            background-color: #D4E6F1;
+        }
+
+        a {
+            font-family: monospace;
+            color: #D4E6F1;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="img/uniqlo.png">
+    </div>
+    <div id="bigBox">
+        <h1>LOGIN</h1>
+        <form action="login_php.php" method="post">
+            <div class="inputBox">
+                <div class="inputText">
+                    <span class="iconfont"></span>
+                    <input type="text" name="membercode" placeholder="membercode">>
+                </div>
+                <div class="inputText">
+                    <span class="iconfont"></span>
+                    <input type="password" name="password" placeholder="password">>
+                </div>
+                <input type="submit" value="LOGIN" class="inputButton">
+                <p><a href="http://localhost/Database-1/register.html">Register here</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

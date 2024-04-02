@@ -1,0 +1,276 @@
+html, body {
+    height: 100%;
+    font-family: "Microsoft JhengHei";
+}
+
+#logo {
+    display: flex;
+    float: left;
+    font-size: 1.5rem;
+    margin: 10px;
+    padding: 10px;
+}
+
+#logo a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#logo a:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.navItem {
+    display: flex;
+    flex-direction: row;
+    float:right;
+}
+nav a {
+    color: inherit;
+    text-decoration: none;
+    margin: 10px;
+    padding: 10px;
+}
+
+nav a:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+nav ul {
+    list-style: none;
+    font-size: 1.25rem;
+}
+
+#banner {
+    display: block;
+}
+
+#banner img {
+    max-width: 100%;
+}
+
+#topbar {
+    display: block;
+    position: sticky;
+    top: 0;
+    left: 0;
+    height: 10%;
+    background: white;
+}
+
+.title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 10px 0 5px 0;
+}
+
+/*----- Budget Input ------*/
+#budgetInput {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+#budgetEnter {
+    width: 200px;
+    height: 25px;
+    font-size: 1.25rem;
+}
+
+#budget_btn {
+    width: 50px;
+    height: 25px;
+}
+
+/* ------ Card Show -------- */
+
+#phoneOverview {
+    display: grid;
+    grid-template-columns: repeat(6, 15%); 
+    justify-content: center;
+}
+
+.card {
+    position: relative;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 220px;
+    height: 400px;
+    margin: 20px 10px 10px 10px;
+    top: 0;
+    place-self: center;
+}
+
+.card img {
+    display: block;
+    max-height: 90%;
+    height: 200px;
+    margin: auto;
+    padding: 5px;
+}
+
+.model-name {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.phone-price {
+    text-align: center;
+    margin: 15px;
+}
+
+.moreInfo {
+    font-size: 1.05rem;
+    text-align: center;
+    width: 100px;
+    padding: 5px;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.moreInfo:hover {
+    background-color: black;
+    color: white;
+}
+
+/*----- Phone Detail -----*/
+#phoneContent {
+    /* display: block; */
+    display: none;
+    background: hsla(0, 0%, 100%, 1);
+    color: black;
+    position: fixed;
+    top: 70px;
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow-y: auto;
+}
+
+/* Phone Image setting */
+#phoneImg img {
+    display: flex;
+    float: left;
+    max-width: 25%;
+    padding: 5% 0 0 30px;
+}
+
+/* Phone Spec Detail Text setting */
+#textArea {
+    position: fixed;
+    left: 25%;
+    padding: 40px 0 0 30px;
+    width: 70%;
+    font-size: 1.125rem;
+    height: 75%;
+    overflow: auto;
+}
+
+/* Close button */
+#close {
+    display: flex;
+    float: right;
+    margin: 6px 11px 6px 13px;
+    cursor: pointer;
+}
+
+#close p {
+    font-size: 1.25rem;
+    padding: 0 13px 0 13px;
+}
+
+#close:hover {
+    background-color: red;
+    color: white;
+    border-radius: 8px;
+}
+
+#close:active {
+    background-color: darkred;
+}
+
+/*----- Advanced Search Setting ------*/
+
+#advance_filter {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+#advance_filter p {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#advance_filter:hover {
+    background-color: black;
+    border-radius: 5px;
+    color: white;
+}
+
+#adv_filter_panel {
+    display: none;
+    position: relative;
+    border: 1px solid black;
+    width: 100%;
+    height: 20%;
+    top: -21px;
+}
+
+#adv_filter_panel form > p {
+    margin: 10px;
+    font-size: 1.25rem;
+}
+
+#checkBox {
+    display: grid;
+    grid-template-columns: repeat(6, 15%);
+    justify-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+#checkBox input {
+    width: 20px;
+    height: 20px;
+    font-size: 1.25rem;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#adv_filter_btn {
+    font-size: 1.05rem;
+    text-align: center;
+    width: 100px;
+    padding: 5px;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#adv_filter_btn:hover {
+    background-color: black;
+    color: white;
+}
+
+/*-------- footer --------*/
+footer {
+    background-color: black;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+footer p {
+    text-align: center;
+    color: white;
+}

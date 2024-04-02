@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- site style -->
+    <link rel="stylesheet" href="./_css/mainsite.css">
+
+    <!-- phone detail spec -->
+    <script src="./_js/phoneListForIndex.js"></script> 
+
+    <!-- jquery -->
+    <script src="_js/jquery-3.6.0.min.js"></script>
+
+    <title>手機比較網</title>
+    <script>
+        $(document).ready(function() {
+            $(".moreInfo").click(function(){
+                $("#phoneInfoWindow").fadeIn("fast");
+                /* 詳細資訊*/
+                var index = $(".moreInfo").index(this);
+                var $phoneDetail = $(this).parent();
+                var phoneName = $phoneDetail.find(".model-name").text();
+                $(".phoneName span").text(phoneName);
+                $(".processor span").text(phones[index].processor);
+                $(".ram span").text(phones[index].ram);
+                $(".rom span").text(phones[index].rom);
+                $(".display span").text(phones[index].display);
+                $(".main-camera span").text(phones[index].mainCamera);
+                $(".front-camera span").text(phones[index].frontCamera);
+                $(".weight span").text(phones[index].weight);
+                $(".battery span").text(phones[index].battery);
+                $(".os span").text(phones[index].os);
+                $(".waterproof span").text(phones[index].waterproof);
+                $(".price span").text(phones[index].price);
+	        });
+
+            $("#okbtn").click(function(){
+		        $("#phoneInfoWindow").fadeOut("fast");
+	        });
+
+            $("#popularHref").click(function() {
+                $("html,body").animate({scrollTop: $("#popularPhone").offset().top}, 500);
+            });
+
+            $("#aboutHref").click(function() {
+                $("html,body").animate({scrollTop: $("#about").offset().top}, 500);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="logo"><a href="./index.html">手機比較網</a></div>
+    <nav>
+        <ul class="navItem">
+            <li><a href="">首頁</a></li>
+            <li><a href="#popularPhone" id="popularHref">熱門手機</a></li>
+            <li><a href="./overview.html">手機一覽</a></li>
+            <li><a href="./budget_filter.html">預算選機</a></li>
+            <li><a href="./news.html">相關新聞</a></li>
+            <li><a href="#about" id="aboutHref">關於我們</a></li>
+        </ul>
+    </nav>
+
+    <div id="banner">
+        <img src="./_img/X1III_banner.png" alt="">
+    </div>
+
+    <div>
+        <p class="title" id="popularPhone">熱門手機</p>
+    </div>
+
+    <div id="popularShow">
+        <div class="card">
+            <img src="./_img/phones/Sony_Xperia_1_III.png" alt="">
+            <div class="phoneInfo">
+                <p class="model-name">Sony Xperia 1 III</p>
+                <p class="card-desc">極速進化 完美速拍</p>
+            </div>
+            <div class="moreInfo">簡易規格</div>
+        </div>
+
+        <div class="card">
+            <img src="./_img/phones/ASUS_ZenFone_8.png" alt="">
+            <div class="phoneInfo">
+                <p class="model-name">ASUS ZenFone 8</p>
+                <p class="card-desc">剛好．更好</p>
+            </div>
+            <div class="moreInfo">簡易規格</div>
+        </div>
+
+        <div class="card">
+            <img src="./_img/Apple/Apple_iPhone_12_Pro.png" alt="">
+            <div class="phoneInfo">
+                <p class="model-name">Apple iPhone 12 Pro</p>
+                <p class="card-desc">躍升，超越。</p>
+            </div>
+            <div class="moreInfo">簡易規格</div>
+        </div>
+
+        <div class="card">
+            <img src="./_img/phones/Samsung_Galaxy_S21_Ultra.png" alt="">
+            <div class="phoneInfo">
+                <p class="model-name">Samsung Galaxy S21 Ultra</p>
+                <p class="card-desc">精彩造起來</p>
+            </div>
+            <div class="moreInfo">簡易規格</div>
+        </div>
+
+        <div class="card">
+            <img src="./_img/phones/Xiaomi_Mi_11.png" alt="">
+            <div class="phoneInfo">
+                <p class="model-name">小米 11</p>
+                <p class="card-desc">電影級相機，做生活的導演</p>
+            </div>
+            <div class="moreInfo">簡易規格</div>
+        </div>
+
+        <div class="card">
+            <img src="./_img/phones/Samsung_Galaxy_A52_5G.png" alt="">
+            <div class="phoneInfo">
+                <p class="model-name">Samsung Galaxy A52 5G</p>
+                <p class="card-desc">超A咖，怪好玩</p>
+            </div>
+            <div class="moreInfo">簡易規格</div>
+        </div>
+    </div>
+
+    <div id="phoneInfoWindow">
+        <div id="PIWtextarea">
+            <div class="phoneName">
+            <p>名稱：<span>Phone name</span></p>
+            </div>
+            <div class="processor">
+                <p>處理器：<span>Processor</span></p>
+            </div>
+            <div class="ram">
+                <p>記憶體：<span>RAM</span> GB</p>
+            </div>
+            <div class="rom">
+                <p>儲存空間：<span>ROM</span> GB</p>
+            </div>
+            <div class="display">
+                <p>螢幕：<span>inch</span> 吋</p>
+            </div>
+            <div class="main-camera">
+                <p>主鏡頭：<span>N/A</span> 萬畫素</p>
+            </div>
+            <div class="front-camera">
+                <p>前鏡頭：<span>N/A</span> 萬畫素</p>
+            </div>
+            <div class="weight">
+                <p>重量：<span>Weight</span> g</p>
+            </div>
+            <div class="battery">
+                <p>電量：<span>N/A</span> mAh</p>
+            </div>
+            <div class="os">
+                <p>系統版本：<span>Operation System</span></p>
+            </div>
+            <div class="waterproof">
+                <p>防水性能：<span>無防水</span></p>
+            </div>
+            <div class="price">
+                <p>售價：NT$ <span>Price</span></p>
+            </div>
+        </div>
+        <div id="okbtn">OK</div>
+    </div>
+
+    <div id="About">
+        <p class="title" id="about">關於我們</p>
+        <p id="reason">創辦原因</p>
+        <p id="aboutText">隨著科技進步，智慧型手機的品牌以及款式也跟著變得多樣許多，而不同公司所發布的手機特色都不相同且價錢也有高低之分，我們希望能透過創辦這個網站，讓想要更換手機的那些人，能夠輕鬆地找到適合自己預算以及符合自己需求的手機，也能從而認識更多手機品牌以及不同品牌的相關特色與它的價位，讓自己能夠有更多樣的選擇。</p>
+        <div id="socialIcon">
+            <a href="https://www.instagram.com/yzusa/"><img src="./_img/instagram-logo.png"></a>
+            <a href="https://www.facebook.com/cowbeiyzu2"><img src="./_img/fb.png"></a>
+            <a href="https://twitter.com/?lang=zh-tw"><img src="./_img/twitter.png"></a>
+        </div>
+        <p id="productorInfo">地址：320桃園市中壢區遠東路135號　　電話：(03)-3258497　　指導老師：趙伯堯　　團體人員：劉文業、魏承恩、汪承緒</p>
+    </div>
+
+    <footer>
+        <p>© 2021 手機比較網</p>
+    </footer>
+</body>
+</html>

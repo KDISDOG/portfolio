@@ -1,0 +1,177 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color:  #D4E6F1;
+    color: #2E4053;
+}
+h1{
+    font-family:monospace;
+    font-weight:bold;
+}
+hr{
+    border: 1px solid lightgrey;
+}
+
+/*設定表格*/
+
+.employee {
+    width: 100%;
+    height: 600px;
+    display: block;
+}
+
+.employee-table {
+    border-collapse: collapse;
+    width: 95%;
+    margin-left: 48px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.employee-table tr {
+    width: 60px;
+    height: 10px;
+    line-height: 30px;
+}
+
+.employee-table td {
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.employee-table th {
+    font-size: 30px;
+}
+
+#reminder {
+    height: 70px;
+    border-style: dotted;
+    border-color: black;
+    background-color: #EAF2F8;
+}
+
+.reminder {
+    display: flex;
+}
+
+h3 {
+    margin: 10px;
+    padding: 10px 10px;
+}
+
+#btn {
+    text-align: center;
+}
+
+#new {
+    font-size: 20px;
+    background-color: #2E4053;
+    position: relative;
+    padding: 8px 30px;
+    border-style: solid;
+    color: #D4E6F1;
+    text-align: center;
+    border-radius: 5px;
+    top: 10px;
+}
+
+#new:hover {
+    background-color: #D4E6F1;
+    color: #2E4053;
+    border-color: white;
+}
+
+.main {
+    border: rgb(137, 135, 143) 3px;
+    border-style: solid;
+    height: 750px;
+}
+
+.layout {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    height: 100px;
+    width: auto;
+    text-align: center;
+}
+
+.addList {
+    border-radius: 10px 10px 10px 10px;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    padding: auto;
+    color: #D4E6F1;
+    background-color: #2E4053;
+}
+
+#eBtn {
+    text-decoration: none;
+    color: black;
+}
+
+#eBtn:hover {
+    background-color: blueviolet;
+    border-color: white;
+    color: white;
+}
+
+#eBtn:active {
+    background-color: turquoise;
+}
+
+#close {
+    position: absolute;
+    top: 0px;
+    left: 96%;
+    /* width: 360px; */
+    padding: 2px;
+    margin: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button {
+    height: 35px;
+    width: 100px;
+    background-color: #7F38EC;
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    text-align: center;
+    margin: 20px 4px;
+    display: inline-block;
+}
+
+.center {
+    margin: auto;
+    width: 700px;
+}
+
+.submit {
+    border: 1px solid #2E4053;
+    background-color: #AED6F1;
+    color: #2E4053;
+}
+
+#cart_win {
+    position: absolute;
+    border: 1px solid white;
+    padding: 10px;
+    background-color:  #AED6F1;
+    color: #2E4053;
+    display: none;
+    border-radius: 8px;
+    box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
+    width: 800px;
+    padding-top: 30px;
+    margin-bottom: 100px;
+    top: 5%;
+    left: 30%;
+}

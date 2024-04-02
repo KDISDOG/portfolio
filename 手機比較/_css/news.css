@@ -1,0 +1,116 @@
+html, body {
+    height: 100%;
+    font-family: "Microsoft JhengHei";
+    overflow: visible;
+}
+
+#logo {
+    display: flex;
+    float: left;
+    font-size: 1.5rem;
+    margin: 10px;
+    padding: 10px;
+}
+
+#logo a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#logo a:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.navItem {
+    display: flex;
+    flex-direction: row;
+    float:right;
+}
+nav a {
+    color: inherit;
+    text-decoration: none;
+    margin: 10px;
+    padding: 10px;
+}
+
+nav a:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+nav ul {
+    list-style: none;
+    font-size: 1.25rem;
+}
+
+#banner {
+    display: block;
+}
+
+#banner img {
+    max-width: 100%;
+}
+
+#topbar {
+    z-index: 10;
+    display: block;
+    position: sticky;
+    top: 0;
+    left: 0;
+    height: 10%;
+    background: white;
+}
+
+.title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 10px 0 50px 0;
+}
+
+/* News */
+#newsShow {
+    display: grid;
+    grid-template-columns: repeat(3, 28%);
+    justify-content: center;
+}
+
+.news_list td {
+    border: 2px black solid;
+    align-items: center;
+}
+
+img {
+    display: inline;
+    max-width: 80%;
+    height: 350px;
+    width: 600px;
+    margin: 40px;
+    padding: 10px;
+}
+
+.news_list a {
+    font-size: 25px;
+    text-align: center;
+}
+
+.news {
+    background-color: rgba(100,200,100,.1);
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+/*-------- footer --------*/
+footer {
+    background-color: black;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+footer p {
+    text-align: center;
+    color: white;
+}

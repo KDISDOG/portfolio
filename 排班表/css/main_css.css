@@ -1,0 +1,205 @@
+/* 整體設定 */
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: #D4E6F1;
+    color: #2E4053;
+}
+
+div{
+    font-family: monospace;
+    font-size: 20px;
+}
+
+select{
+    border: #2E4053 2px solid;
+    border-radius:20px;
+    display: inline-block;
+    font-family: Arial;
+    font-size:25px;
+    background-color: #D4E6F1;
+    color: #2E4053;
+    }
+
+select:hover{
+    background-color: #2E4053;
+    color: #D4E6F1;
+    display: inline;
+}
+
+/**
+* 設定日曆的大小
+*/
+
+.calendar {
+    width: 100%;
+    height: 600px;
+    display: block;
+}
+
+
+/**
+* 設定日曆頂部盒子
+*/
+
+.calendar .calendar-title-box {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    line-height: 40px;
+    text-align: center;
+}
+
+
+/**
+* 設定上個月的按鈕圖示
+*/
+
+.calendar .prev-month {
+    position: absolute;
+    top: 12px;
+    left: 50px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-left: 0px;
+    border-top: 18px solid transparent;
+    border-right: 24px solid #999;
+    border-bottom: 18px solid transparent;
+    cursor: pointer;
+}
+
+
+/**
+* 設定下個月的按鈕圖示
+*/
+
+.calendar .next-month {
+    position: absolute;
+    top: 12px;
+    right: 70px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-right: 0px;
+    border-top: 18px solid transparent;
+    border-left: 24px solid #999;
+    border-bottom: 18px solid transparent;
+    cursor: pointer;
+}
+
+
+/* 設定日曆表格樣式 */
+
+.calendar-table {
+    width: 95%;
+    margin-left: 48px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+
+/* 表格 */
+
+.calendar-table tr {
+    width: 60px;
+    height: 110px;
+    line-height: 30px;
+}
+
+.calendar-table td {
+    width: 100px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(58, 19, 19);
+    text-align: left;
+    vertical-align: top;
+}
+
+.calendar-table td:hover {
+    border-color: blue;
+    border-width: 2px;
+}
+
+.calendar-table td:active {
+    border-color: brown;
+    border-width: 2px;
+}
+
+
+/* 當前天 */
+
+.currentDay {
+    font-size: x-large;
+    color: red;
+}
+
+
+/* 本月 */
+
+.currentMonth {
+    font-size: large;
+    color: rgb(0, 0, 0);
+}
+
+
+/* 其他月 */
+
+.otherMonth {
+    font-size: medium;
+    color: rgb(241, 194, 241);
+}
+
+.layout {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    height: 100px;
+    width: auto;
+    text-align: center;
+}
+
+.calendarTitle {
+    font-size: 40px;
+}
+
+.addBtn {
+    display: block;
+}
+
+#addList {
+    background-color: rgb(230, 89, 194);
+    border-radius: 10px 10px 10px 10px;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    padding: auto;
+    color: #D4E6F1;
+}
+
+#reminder {
+    height: 70px;
+    border-style: dotted;
+    border-color: black;
+    background-color: #EAF2F8;
+}
+
+.reminder {
+    display: flex;
+}
+
+.main {
+    width: auto;
+    height: 900px;
+}
+
+.dateplick {
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    margin-top: 50px;
+}

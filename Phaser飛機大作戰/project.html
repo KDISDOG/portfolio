@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="project/phaser.js"></script>
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      const config = {
+        width: 600,
+        height: 800,
+        autoCenter: true,
+        physics: {
+          default: "arcade",
+          arcade: {
+            gravity: { y: 0 },
+          },
+        },
+        scene: {
+          preload: preload,
+          create: create,
+          update: update,
+        },
+      };
+      let plane,
+        Splane,
+        bullets,
+        enemy1,
+        enemy2,
+        enemy3,
+        bullet,
+        border,
+        borderL,
+        scoreText,
+        hpbar,
+        upgrade,
+        upgrades,
+        restartText;
+      let cursors;
+      let startBtn;
+      let isMove = false;
+      let backgroundIMG;
+      var bulletspeed = 500;
+      let bulletopen = false;
+      let checkpoint = 0;
+      let score = 0;
+      let colli = 0;
+      let colliTime = 0;
+      let y2 = 0;
+      let y3 = 0;
+      let upgradetimes = 0;
+      let upgradeplane = 0;
+      let check = false;
+      let x = 0;
+      let hp = 5;
+      let gameOver = false;
+      const game = new Phaser.Game(config);
+      function preload() {
+        this.load.image("background", "project/background1.png");
+        this.load.spritesheet("plane", "project/plane3.png", {
+          frameWidth: 74,
+          frameHeight: 60,
+        });
+        this.load.spritesheet("startbtn", "project/START.png", {
+          frameWidth: 200,
+          frameHeight: 60,
+        });
+        this.load.spritesheet("startplane", "project/planeStart.png", {
+          frameWidth: 74,
+          frameHeight: 60,
+        });
+        this.load.image("Pbullet", "project/Pbullet.png");
+        this.load.spritesheet("enemy1", "project/enemy1.png", {
+          frameWidth: 50,
+          frameHeight: 35,
+        });
+        this.load.image("border", "project/border.png");
+        this.load.spritesheet("enemy2", "project/enemy2.png", {
+          frameWidth: 90,
+          frameHeight: 102,
+        });
+        this.load.spritesheet("enemy3", "project/enemy3.png", {
+          frameWidth: 75,
+          frameHeight: 70,
+        });
+        this.load.image("borderLR", "project/borderLR.png");
+        this.load.spritesheet("hpbar", "project/bloood.png", {
+          frameWidth: 140,
+          frameHeight: 25,
+        });
+        this.load.image("upgrade", "project/gift.png");
+      }
+      function create() {
+        //----------------------載入--------------------------------------------------------
+        this.backgroundIMG = this.add
+          .tileSprite(
+            0,
+            0,
+            this.game.config.width,
+            this.game.config.height,
+            "background"
+          )
+          .setOrigin(0);
+        plane = this.physics.add.sprite(300, 600, "plane");
+        plane.body.setAllowGravity(false);
+        plane.setCollideWorldBounds(true);
+        plane.visible = false;
+        scoreText = this.add.text(400, 5, "得分:0", {
+          fontSize: "32px",
+          fill: "#000",
+        });
+        hpbar = this.add.sprite(250, 20, "hpbar");
+        //----------------------飛機動畫-----------------------------------------------
+        Splane = this.add.sprite(300, 600, "startplane");
+        this.anims.create({
+          key: "startAni",
+          frames: this.anims.generateFrameNumbers("startplane", {
+            start: 0,
+            end: 1,
+          }),
+          frameRate: 10,
+          repeat: -1,
+        });
+        this.anims.create({
+          key: "planecolli",
+          frames: this.anims.generateFrameNumbers("plane", {
+            start: 2,
+            end: 3,
+          }),
+          frameRate: 5,
+          repeat: 0,
+        });
+        Splane.anims.play("startAni", true);
+        //----------------------開始按鈕--------------------------------------------------------
+        startBtn = this.add
+          .sprite(config.width / 2, config.height / 2, "startbtn")
+          .setInteractive()
+          .on("pointerover", () => {
+            startBtn.setFrame(1);
+          })
+          .on("pointerout", () => {
+            startBtn.setFrame(0);
+          })
+          .on("pointerup", () => {
+            startBtn.destroy();
+            plane.visible = true;
+            Splane.destroy();
+            bulletopen = true;
+            checkpoint = 1;
+            hp = 5;
+          });
+        //---------------------重新開始--------------------------------------------------------
+        restartText = this.add.text(
+          config.width / 2 - 100,
+          config.height / 2 - 40,
+          "重新開始",
+          {
+            fontSize: "40px 微軟正黑體",
+            color: "white",
+            stroke: "red",
+            padding: 10,
+            backgroundColor: "black",
+          }
+        );
+        restartText.visible = false;
+        restartText
+          .setInteractive()
+          .on("pointerdown", (pointer, localX, localY, event) => {
+            score = 0;
+            gameOver = false;
+            this.scene.restart();
+          });
+        //---------------------滑鼠輸入--------------------------------------------------------
+        cursors = this.input.keyboard.createCursorKeys();
+        plane
+          .setInteractive()
+          .on("pointerdown", (pointer) => {
+            if (pointer.leftButtonDown()) {
+              isMove = true;
+              plane.setFrame(0);
+            }
+          })
+          .on("pointerup", (pointer) => {
+            if (pointer.leftButtonReleased()) {
+              isMove = false;
+              plane.setFrame(1);
+            }
+          });
+        this.bullets = this.add.group();
+        this.upgrades = this.add.group();
+        //-------------------------敵軍&邊界----------------------------------------
+        this.border = this.add.sprite(250, -10, "border");
+        this.borderL = this.add.sprite(0, 790, "border").setOrigin(0);
+        this.physics.add.existing(this.border);
+        this.physics.add.existing(this.borderL);
+        //-------------------------敵軍的GROUP-------------------------
+        ["enemy1", "enemy2", "enemy3"].forEach((item) => {
+          const EnemyClass = EnemyFactory(item, this.game.config.height);
+          this[item] = this.add.group({
+            classType: EnemyClass,
+            runChildUpdate: true,
+          });
+          const key = item.replace("enemy", "");
+          this.anims.create({
+            key: `enemyBoom${key}`,
+            frames: this.anims.generateFrameNumbers(`enemy${key}`, {
+              start: 0,
+              end: 1,
+            }),
+            frameRate: 5,
+            repeat: 0,
+          });
+        });
+        this.enemyTime = 0;
+        //---------------------------碰撞----------------------------------------------------
+        ["enemy1", "enemy2", "enemy3"].forEach((item) => {
+          this.physics.add.overlap(
+            this.bullets,
+            this[item],
+            function (bullet, enemy) {
+              bullet.destroy();
+              if (item == "enemy1") {
+                const key = item.replace("enemy", "");
+                const enemyFrame = this.add.sprite(enemy.x, enemy.y, "enemy1");
+                enemyFrame.anims.play(`enemyBoom${key}`);
+                enemyFrame.once("animationcomplete", function () {
+                  enemyFrame.destroy();
+                });
+                score += Phaser.Math.RND.between(10, 50);
+                enemy.destroy();
+              }
+              if (item == "enemy2") {
+                y2++;
+                if (y2 == 2) {
+                  const key = item.replace("enemy", "");
+                  const enemyFrame = this.add.sprite(
+                    enemy.x,
+                    enemy.y,
+                    "enemy2"
+                  );
+                  enemyFrame.anims.play(`enemyBoom${key}`);
+                  enemyFrame.once("animationcomplete", function () {
+                    enemyFrame.destroy();
+                  });
+                  enemy.destroy();
+                  score += Phaser.Math.RND.between(30, 100);
+                  y2 = 0;
+                }
+              }
+              if (item == "enemy3") {
+                y3++;
+                if (y3 == 4) {
+                  const key = item.replace("enemy", "");
+                  const enemyFrame = this.add.sprite(
+                    enemy.x,
+                    enemy.y,
+                    "enemy3"
+                  );
+                  enemyFrame.anims.play(`enemyBoom${key}`);
+                  enemyFrame.once("animationcomplete", function () {
+                    enemyFrame.destroy();
+                  });
+                  enemy.destroy();
+                  score += Phaser.Math.RND.between(70, 150);
+                  y3 = 0;
+                }
+              }
+              scoreText.setText("得分:" + score);
+            },
+            null,
+            this
+          );
+          this.physics.add.overlap(
+            plane,
+            this[item],
+            function (planes, enemy) {
+              enemy.destroy();
+              if (item == "enemy1") {
+                score -= 10;
+                x++;
+                hpbar.setFrame(x);
+                hp -= 1;
+                if (hp == 0) {
+                  gameOver = true;
+                  this.physics.pause();
+                }
+              }
+              if (item == "enemy2") {
+                score -= 20;
+                x++;
+                hpbar.setFrame(x);
+                hp -= 1;
+                if (hp == 0) {
+                  gameOver = true;
+                  this.physics.pause();
+                }
+              }
+              if (item == "enemy3") {
+                score -= 30;
+                x++;
+                hpbar.setFrame(x);
+                hp -= 1;
+                if (hp == 0) {
+                  gameOver = true;
+                  this.physics.pause();
+                }
+              }
+              scoreText.setText("得分:" + score);
+              plane.anims.play("planecolli");
+            },
+            null,
+            this
+          );
+          this.physics.add.overlap(
+            this.borderL,
+            this[item],
+            function (planes, enemy) {
+              score -= 30;
+              enemy.destroy();
+              scoreText.setText("得分:" + score);
+            },
+            null,
+            this
+          );
+        });
+
+        this.physics.add.overlap(
+          this.bullets,
+          this.border,
+          function (bullet, border) {
+            bullet.destroy();
+          },
+          null,
+          this
+        );
+        this.physics.add.overlap(
+          plane,
+          this.upgrades,
+          function (planes, upgradess) {
+            upgradess.destroy();
+            upgradeplane = 1;
+          },
+          null,
+          this
+        );
+        this.bulletTime = 0;
+      }
+      function upgradecollect(plane, upgrade) {
+        upgrade.destroy();
+      }
+      function EnemyFactory(key, gameHeight) {
+        return new Phaser.Class({
+          Extends: Phaser.GameObjects.Sprite,
+          initialize: function Bullet(scene) {
+            Phaser.GameObjects.Sprite.call(this, scene, 0, 0, key);
+          },
+          update: function () {
+            const time = new Date().getTime();
+            if (this.y > gameHeight) {
+              this.hide();
+            }
+          },
+          show: function () {
+            this.setActive(true);
+            this.setVisible(true);
+          },
+          hide: function () {
+            this.setActive(false);
+            this.setVisible(false);
+          },
+        });
+      }
+      function update() {
+        const time = new Date().getTime();
+        if (!gameOver) {
+          if (isMove) {
+            plane.x = this.input.x;
+            plane.y = this.input.y;
+          }
+          if (bulletopen == true) {
+            if (upgradeplane == 0) {
+              if (cursors.space.isDown) {
+                if (time - this.bulletTime > bulletspeed) {
+                  const bullet = this.add.sprite(
+                    plane.x,
+                    plane.y - plane.height / 2,
+                    "Pbullet"
+                  );
+                  this.bulletTime = time;
+                  this.physics.add.existing(bullet);
+                  bullet.body.setVelocity(0, -300);
+                  this.bullets.add(bullet);
+                }
+              }
+            }
+            if (cursors.space.isDown) {
+              if (upgradeplane == 1) {
+                if (time - this.bulletTime > bulletspeed) {
+                  const bullet = this.add.sprite(
+                    plane.x - 17,
+                    plane.y - plane.height / 2,
+                    "Pbullet"
+                  );
+                  const bullet2 = this.add.sprite(
+                    plane.x + 17,
+                    plane.y - plane.height / 2,
+                    "Pbullet"
+                  );
+                  this.bulletTime = time;
+                  this.physics.add.existing(bullet);
+                  this.physics.add.existing(bullet2);
+                  bullet.body.setVelocity(0, -300);
+                  bullet2.body.setVelocity(0, -300);
+                  this.bullets.add(bullet);
+                  this.bullets.add(bullet2);
+                }
+              }
+            }
+          }
+        }
+        if (score >= 100) {
+          checkpoint = 2;
+          if (!check) {
+            upgradetimes = 1;
+            check = true;
+          }
+        }
+        if (score >= 200) {
+          checkpoint = 3;
+        }
+        if (checkpoint == 2) {
+          if (upgradetimes == 1) {
+            const upgrade = this.add.sprite(300, 20, "upgrade");
+            this.physics.add.existing(upgrade);
+            upgrade.body.setVelocity(0, 200);
+            this.upgrades.add(upgrade);
+            upgradetimes = 0;
+          }
+        }
+        if (!gameOver) {
+          if (checkpoint == 1) {
+            if (time - this.enemyTime > 1000) {
+              const enemyIndex = 1;
+              const enemy = this[`enemy${enemyIndex}`].getFirstDead(true);
+              if (enemy) {
+                enemy.show();
+                enemy.setPosition(
+                  Phaser.Math.Between(
+                    0 + enemy.width,
+                    this.game.config.width - enemy.width
+                  ),
+                  0
+                );
+                this.physics.add.existing(enemy);
+                enemy.body.setVelocity(0, 150);
+                this.enemyTime = time;
+              }
+            }
+          }
+          if (checkpoint == 2) {
+            if (time - this.enemyTime > 800) {
+              const enemyIndex = 1;
+              const enemy = this[`enemy${enemyIndex}`].getFirstDead(true);
+              if (enemy) {
+                enemy.show();
+                enemy.setPosition(
+                  Phaser.Math.Between(
+                    0 + enemy.width,
+                    this.game.config.width - enemy.width
+                  ),
+                  0
+                );
+                this.physics.add.existing(enemy);
+                enemy.body.setVelocity(0, 180);
+                enemy.body.setVelocity(0, 50 * (4 - enemyIndex));
+                this.enemyTime = time;
+              }
+            }
+          }
+          if (checkpoint == 3) {
+            if (time - this.enemyTime > 600) {
+              const enemyIndex = Phaser.Math.Between(1, 3);
+              const enemy = this[`enemy${enemyIndex}`].getFirstDead(true);
+              if (enemy) {
+                enemy.show();
+                enemy.setPosition(
+                  Phaser.Math.Between(
+                    0 + enemy.width,
+                    this.game.config.width - enemy.width
+                  ),
+                  0
+                );
+                this.physics.add.existing(enemy);
+                enemy.body.setVelocity(0, 230);
+                this.enemyTime = time;
+              }
+            }
+          }
+        }
+        this.backgroundIMG.tilePositionY -= 1;
+        if (gameOver) {
+          restartText.setVisible(true);
+          x = 0;
+          upgradeplane = 0;
+        }
+      }
+    </script>
+  </body>
+</html>
