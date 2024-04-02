@@ -1,0 +1,50 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  script(src='https://code.jquery.com/jquery-3.6.0.js')
+  script(src='/javascripts/tilt.js-master/dest/tilt.jquery.js')
+  script(src='/javascripts/tilt.js-master/dest/tilt.jquery.min.js')
+  script(src='/javascripts/tilt.js-master/src/tilt.jquery.js')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css')
+  link(rel='stylesheet' type='text/css' href='/stylesheets/aboutUs.css')
+  title About Us
+section.showcase
+  header
+    header
+    img.logo(id="logobtn")(src="./images/logo.png" onclick="window.location.assign('/')")
+    h3.topmenutext(id="Chart" onclick="window.location.assign('Chart')") My chart
+    h3.topmenutext(id="SetGoal" onclick="window.location.assign('setgoal')") Set a goal
+    h3.topmenutext(id="AboutUS" onclick="window.location.assign('memberAboutUs')") About us
+    .toggle
+  .overlay
+  .text
+    h2
+      | Group list:
+      br
+      |                 1082010 &#x6797;&#x52AD;&#x8B19; (front-end)
+      br
+      |                 1082049 &#x674E;&#x66DC; (back-end)
+      br
+      |                 1082038 &#x9B4F;&#x627F;&#x6069; (front-end)
+      br
+      |                 1082054 &#x5289;&#x6587;&#x696D; (back-end)
+  .text
+    h2#tks
+      | tks for using,
+      br
+      |                 donate us via instagram @0118_pablo.
+      br
+      |                 best reguards.
+.menu
+    img.memberimage(src="/images/member.png", alt="")
+    .loginbtndiv
+      button.loginbtn(onclick="window.location.assign('login')") Login 
+      br
+      button.signup(onclick="window.location.assign('signup')") SignUp
+    #linkweb
+script.
+  setInterval("linkweb.innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);
+
+script(src='/javascripts/aboutUs.js')

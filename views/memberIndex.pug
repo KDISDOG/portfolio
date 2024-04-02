@@ -1,0 +1,45 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  script(src='https://code.jquery.com/jquery-3.6.0.js')
+  script(src='/javascripts/tilt.js-master/dest/tilt.jquery.js')
+  script(src='/javascripts/tilt.js-master/dest/tilt.jquery.min.js')
+  script(src='/javascripts/tilt.js-master/src/tilt.jquery.js')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css')
+  link(rel='stylesheet' type='text/css' href='/stylesheets/memberIndex.css')
+  title NICEDAY
+section.showcase
+  header
+    img.logo(id="logobtn")(src="./images/logo.png" onclick="window.location.replace(location.href)")
+    h3.topmenutext(id="Chart" onclick="window.location.assign('Chart')") My chart
+    h3.topmenutext(id="SetGoal" onclick="window.location.assign('setgoal')") Set a goal
+    h3.topmenutext(id="AboutUS" onclick="window.location.assign('memberAboutUs')") About us
+    .toggle
+  .overlay
+  .text
+    span(data-tilt='')
+      h2 Have a nice day.
+  .animation 
+    h3#YourGoal="Your Bmi Goal: "
+    h3#YourBMI="Your Bmi: "
+    h3#Dayline="Your Dayline: "
+    h3#Gap
+.menu
+    img.memberimage(src="/images/member.png", alt="")
+    .loginbtndiv
+      p.Username=`Welcome  ${username}`
+      br
+      button.editMemberbtn(onclick="window.location.assign('editMember')") Edit member
+      button.logoutbtn(onclick="window.location.assign('login')") Logout
+    #linkweb
+script.
+  setInterval("linkweb.innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);
+script(src='/javascripts/tilt.js-master/src/tilt.jquery.js')
+script(src='/javascripts/index.js')
+script(src='/javascripts/memberIndex.js')
+
+    
+
+

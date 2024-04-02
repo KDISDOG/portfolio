@@ -1,0 +1,152 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  script(src='https://code.jquery.com/jquery-3.6.0.js')
+  script(src='/javascripts/tilt.js-master/dest/tilt.jquery.js')
+  script(src='/javascripts/tilt.js-master/dest/tilt.jquery.min.js')
+  script(src='/javascripts/tilt.js-master/src/tilt.jquery.js')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css')
+  link(rel='stylesheet' type='text/css' href='/stylesheets/aboutUs.css')
+  title Sign up
+  style.
+    body{
+    background-color: #04afbb;
+    }
+    #content{
+    width: 750px;
+    height: 500px;
+    }
+    img{
+    margin-top: 50px;
+    width: 250px;
+    height: auto;
+    cursor: pointer;
+    animation: rotateIn;
+    animation-duration: 1.4s;
+    }
+    h1{
+    color:white;
+    text-align: center;
+    margin-top: 80px;
+    font-size: 50px;
+    }
+    table {
+    overflow:hidden;
+    margin-top:50px;
+    }
+    td{
+    color:white;
+    font-size: 40px;
+    }
+    #Username{
+    font-size: 26px;
+    margin-left:53px;
+    margin-top: 12px;
+    border: 1px solid white;
+    }
+    #password{
+    font-size: 26px;
+    margin-left: 52px;
+    margin-top: 12px;
+    border: 1px solid white;
+    }
+    #height{
+    font-size: 26px;
+    margin-left: 98px;
+    margin-top: 12px;
+    border: 1px solid white;
+    }
+    #weight{
+    font-size: 26px;
+    margin-left: 98px;
+    margin-top: 12px;
+    border: 1px solid white;
+    }
+    #age{
+    display: inline;
+    font-size: 26px;
+    margin-left: 172px;
+    margin-top: 12px;
+    border: 1px solid white;
+    }
+    .sex{
+    font-size: 26px;
+    margin-right: 113px;
+    border: 1px solid white;
+    }
+    #submit{
+    position:relative;
+    top:73%;
+    color:white;
+    font-size: 30px;
+    margin-left: 220px;
+    margin-top: 50px;
+    background-color: #04afbb;
+    border: 1px white solid;
+    }
+    button{
+    color:white;
+    background-color: #04afbb;
+    font-size: 20px;
+    border-style:none;
+    position:fixed;
+    top:10px;
+    }
+    #sex{
+    font-size:30px;
+    position: absolute;
+    right: 38%;
+    margin-top: 10px;
+    }
+    h4{
+      color:red;
+      position:absolute;
+      left:45%;
+      top:77%;
+    }
+div
+  button(onclick="window.location.assign('login')") < back 
+  .containter-fluid
+    if messages.error 
+      .row
+        .col.bg-light.text-center.p-2 
+          h4(class="text-danger") #{messages.error}
+  h1 Sign Up
+  form( action='/signup' method='POST')
+    center
+      #content
+        table
+          img(src='./images/logo.png' alt='')
+          tr
+            td
+              | Username
+              input#Username(type='text' name="Username"  required)
+          tr
+            td
+              | Password
+              input#password(type='password' name="password" required)
+          tr
+            td
+              | Age
+              input#age(type='text' name="age" required)
+          tr
+            td Sex
+            td#sex
+              select.sex(name="sex" required)
+                option(value="male" ) male
+                option(value="female") female
+          tr
+            td
+              | Height
+              input#height(type='number' name="height" placeholder='cm' required)
+          tr
+            td
+              | Weight
+              input#weight(type='number' placeholder='Kg' required)
+          tr
+            td
+              //input(type='hidden' name='action' value='add')
+              button#submit(type='submit' ) Submit
+          tr

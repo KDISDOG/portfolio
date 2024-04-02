@@ -1,0 +1,39 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  script(src='https://code.jquery.com/jquery-3.6.0.js')
+  script(src='/javascripts/tilt.js-master/dest/tilt.jquery.js')
+  script(src='/javascripts/tilt.js-master/dest/tilt.jquery.min.js')
+  script(src='/javascripts/tilt.js-master/src/tilt.jquery.js')
+  link(rel="stylesheet", href="/stylesheets/editMember.css" type='text/css' )
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css')
+  title Sign up
+
+div
+    button(onclick="window.location.assign('memberIndex')") < back 
+    h1 Edit member
+    form( action='/signup' method='POST')
+    center
+        #content
+            table
+                img(src='./images/logo.png' alt='')
+                tr
+                    td
+                        #text_age Age:
+                            input#age(type='text' name="age" required)
+                tr
+                    td 
+                        #text_sex Sex:
+                            select.sex(name="sex" required)
+                                option(value="male" ) male
+                                option(value="female") female
+                tr
+                    td
+                        #text_height Height:
+                            input#height(type='number' name="height" placeholder='cm' required)
+                tr
+                    td
+                        button#submit(type='submit' ) Submit
+script(src='/javascripts/editmember.js')

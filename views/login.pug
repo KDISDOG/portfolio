@@ -1,0 +1,109 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  script(src='https://code.jquery.com/jquery-3.6.0.js')
+  script(src='/javascripts/tilt.js-master/dest/tilt.jquery.js')
+  script(src='/javascripts/tilt.js-master/dest/tilt.jquery.min.js')
+  script(src='/javascripts/tilt.js-master/src/tilt.jquery.js')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css')
+  link(rel='stylesheet' type='text/css' href='/stylesheets/aboutUs.css')
+  title Login
+  style.
+    body{
+    background-color: #04afbb;
+    }
+    #content{
+    width: 750px;
+    height: 500px;
+    } 
+    img{
+    margin-top: 50px;
+    width: 250px;
+    height: auto;
+    cursor: pointer;
+    animation: bounce;
+    animation-duration: 1.4s;
+    }
+    h1{
+    color:white;
+    text-align: center;
+    margin-top: 80px;
+    font-size: 50px;
+    }
+    table {
+    overflow:hidden;
+    margin-top:50px;
+    }
+    td{
+    color:white;
+    font-size: 40px;
+    }
+    #Username{
+    font-size: 26px;
+    margin-left: 40px;
+    margin-top: 12px;
+    border: 1px solid white;
+    }
+    #password{
+    font-size: 26px;
+    margin-left: 40px;
+    margin-top: 12px;
+    border: 1px solid white;
+    }
+    #submit{
+    color:white;
+    font-size: 30px;
+    margin-left: 400px;
+    margin-top: 50px;
+    background-color: #04afbb;
+    border: 1px white solid;
+    }
+    button{
+    color:white;
+    background-color: #04afbb;
+    font-size: 20px;
+    border-style: none;
+    position:fixed;
+    top:10px;
+    }
+    #sign{
+    position: relative;
+    left:33%;
+    bottom:10%;
+    }
+    h4{
+      color:red;
+      position:absolute;
+      left:47%;
+      top:60%;
+    }
+div
+  button(onclick="window.location.assign('/')")  < back 
+  .containter-fluid
+    if messages.info 
+      .row
+        .col.bg-light.text-center.p-2 
+          h4(class="text-danger") #{messages.info}
+  h1 Login
+  form(action="/login" method="POST")
+    center
+      #content
+        table
+          img(src='./images/logo.png' alt='')
+          tr
+            td
+              | Username
+              input#Username(type='text' placeholder="Username" name="Username")
+          tr
+            td
+              | Password
+              input#password(type='password' placeholder="Password" name="password")
+          tr
+            
+            td  
+              //input(type='hidden' name='action' value='add')
+              input#submit(type='submit' value='login')
+          tr
+button#sign(onclick="window.location.assign('signup')")  have not Sign up?
