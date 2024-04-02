@@ -1,0 +1,95 @@
+body{
+    background-color: #04afbb;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+}
+
+#content{
+    width: 750px;
+    height: 700px;
+}
+
+img{
+    margin-top: 50px;
+    width: 250px;
+    height: auto;
+    cursor: pointer;
+    animation: rotateIn;
+    animation-duration: 1.4s;
+}
+
+h1{
+    color:white;
+    text-align: center;
+    margin-top: 80px;
+    font-size: 50px;
+}
+
+table {
+    overflow:hidden;
+    margin-top:50px;
+}
+
+td{
+    color:white;
+    font-size: 40px;
+}
+
+#height{
+    width: 300px;
+    height: 35px;
+    font-size: 26px;
+    margin-left: 78px;
+    border: 1px solid white;
+}
+
+#age{
+    width: 300px;
+    font-size: 26px;
+    margin-left: 150px;
+    border: 1px solid white;
+}
+
+.sex{
+    width: 305px;
+    font-size: 26px;
+    margin-left: 150px;
+    border: 1px solid white;
+}
+
+#submit{
+    font-family: 'Courier New', Courier, monospace;
+    position:relative;
+    margin-top: 70px;
+    margin-bottom: 10px;
+    margin-left: 245px;
+    color:white;
+    font-size: 30px;
+    font-weight: 800;
+    background-color: #04afbb;
+    border: 1px white solid;
+}
+
+button{
+    color:white;
+    background-color: #04afbb;
+    font-size: 20px;
+    border-style:none;
+    position:fixed;
+    top:10px;
+}
+
+#text_age{
+    width: 600px;
+    height: 45px;
+}
+
+#text_sex{
+    width: 600px;
+    height: 45px;
+}
+
+#text_height{
+    width: 600px;
+    height: 45px;
+}

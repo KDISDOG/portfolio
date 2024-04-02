@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', monospace;
+}
+html,
+body {
+    height: 80%;
+    background-color: #04afbb;
+}
+
+.datePickArea {
+    margin: 20px 30px;
+}
+
+#dispRangeText {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.datePickText {
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+
+/* .fill { 
+    min-height: 80%;
+    height: 80%;
+} */
+
+#myChart {
+    margin: 40px;
+}
+
+.dateInput {
+    width: 150px;
+}
+
+.switchDRBtn {
+    padding-top: 140px;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 100px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+}
+.logo {
+    text-transform: uppercase;
+    cursor: pointer;
+    animation: fadeInUp;
+    animation-duration: 1.4s;
+    height:200px;
+    width: auto;
+}
+
+header #Chart {
+    margin-left: 40%;
+    display: inline-block;
+}
+
+header .topmenutext {
+    color: #fff;
+    animation: fadeInUp;
+    animation-duration: 1.4s;
+    font-size: 30px;
+}
+
+.showcase {
+    position: absolute;
+    right: 0;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: grey;
+    transition: 0.5s;
+    z-index: 2;
+}
+
+.showcase.active {
+    right: 300px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #04afbb;
+    mix-blend-mode: overlay;
+}
+.animation{
+    position: relative;
+    width: 100px;
+    height:100px;
+    background-color: #fff;
+}
