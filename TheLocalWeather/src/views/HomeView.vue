@@ -5,12 +5,10 @@ import { useRouter } from "vue-router";
 import CityList from "../components/CityList.vue";
 const searchQuery = ref("");
 const queryTimeout = ref(null);
-const mapboxAPIKey =
-  "pk.eyJ1Ijoic2FtOTAzMTUiLCJhIjoiY2x1ODFhN216MGNkcDJpbXNxbWh5b2NheCJ9.pXqt6S3NTxkfw3H0zuyBog";
+const mapboxAPIKey = import.meta.env.VITE_APP_MAPBOX_KEY;
 const mapboxSearchResults = ref(null);
 const searchError = ref(null);
 const router = useRouter();
-
 const getSearchResults = () => {
   clearTimeout(queryTimeout.value);
   queryTimeout.value = setTimeout(async () => {
@@ -79,9 +77,9 @@ const previewCity = (searchResult) => {
     </div>
     <div class="flex flex-col gap-4">
       <Suspense>
-        <CityList/>
+        <CityList />
         <template #fallback>
-             <p>Loading...</p> 
+          <p>Loading...</p>
         </template>
       </Suspense>
     </div>
